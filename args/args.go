@@ -21,7 +21,6 @@ import (
 	"bytes"
 	goflag "flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -110,7 +109,7 @@ func (g *GeneratorArgs) AddFlags(fs *pflag.FlagSet) {
 
 // LoadGoBoilerplate loads the boilerplate file passed to --go-header-file.
 func (g *GeneratorArgs) LoadGoBoilerplate() ([]byte, error) {
-	b, err := ioutil.ReadFile(g.GoHeaderFilePath)
+	b, err := os.ReadFile(g.GoHeaderFilePath)
 	if err != nil {
 		return nil, err
 	}
